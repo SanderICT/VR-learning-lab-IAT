@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <script src="https://rawgit.com/mayognaise/aframe-mouse-cursor-component/master/dist/aframe-mouse-cursor-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.3.1/dist/aframe-environment-component.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <a-scene>
+        <a-entity camera look-controls mouse-cursor></a-entity>
+        <a-entity id="camera" camera="userHeight: 1.6" look-controls cursor="rayOrigin: mouse"></a-entity>
+        <a-camera id="js--camera" position="1 1.6 -25" rotation="270 90 270">
+            <a-plane id="js--blind" color="black" width="10" height="10" position="10 -0.5 -1"></a-plane>
+          
+            <a-cursor
+            animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 100; from: 0.1 0.1 0.1; to: 1 1 1"
+            animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1000; from: 1 1 1; to: 0.1 0.1 0.1"
+            animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
+
+            id="js--cursor"
+            cursor = "fuse: true; fuseTimeout: 1000" 
+            material = "shader: flat" 
+            color = "brown"
+            geometry = "primitive: ring; radiusInner: 0.007; radiusOuter: 0.01" 
+            position = "0 0 -0.5" 
+            raycaster = "objects: .js--ineract, js--camera"></a-cursor>
+
+            <a-image id="js--HUD" src="HUD.png" material="opacity: 0.6" width="0.5" height="0.5" position="-1.2 -0.5 -1"></a-image>
+            <a-image src="TalkToARchie.png" material="opacity: 1" width="0.23" height="0.3" position="1.4 0.6 -1"></a-image>
+
+            <a-image id="js--blue_P" class="js--antwoordja js--ineract" src="Blue_plane.png" material="opacity: 0.8" width="1.7" height="0.7" position="-50 2.5 -50"></a-image>
+            <a-text id="js--antwoordjat" value="Natuurlijk" width="3"  rotation="0 0 0" color="black" position="-50 1.9 -50"></a-text>        
+
+            <a-image id="js--green_P" class="js--antwoordnee js--ineract" src="green_plane.png" material="opacity: 0.8" width="1.7" height="0.7" position="-50 2.5 -50"></a-image>
+            <a-text id="js--antwoordneet" value="Nu niet" width="3" rotation="0 0 0" color="black" position="-50 1.9 -50"></a-text>
+
+            <a-image id="js--orange_P" src="orange_plane.png" material="opacity: 0.8" width="1.7" height="0.7" position="-50 2.5 -50"></a-image>
+            <a-image id="js--purple_P" src="purple_plane.png" material="opacity: 0.8" width="1.7" height="0.7" position="-50 2.5 -50"></a-image>
+
+        </a-camera>
+        <!-- <a-entity environment="preset: default;"></a-entity> -->
+        <a-box src="grass.png" width="50" depth="70" height="0.1" position="0 -1 0"></a-box>
+
+        <a-asset-item id="school-obj" src="untitled.obj"></a-asset-item>
+            <a-asset-item id="school-mtl" src="untitled.mtl"></a-asset-item>
+        <a-obj-model src="#school-obj" mtl="#school-mtl" scale="0.8 0.8 0.8" position="0 -1 -40" rotation="0 0 0"></a-obj-model>
+        
+        <a-asset-item id="chess-obj" src="chess.obj"></a-asset-item>
+            <a-asset-item id="chess-mtl" src="chess.mtl"></a-asset-item>
+        <a-obj-model src="#chess-obj" mtl="#chess-mtl" scale="0.5 0.5 0.5" position="-15 -0.8 -20" rotation="0 10 0"></a-obj-model>
+
+        <a-asset-item id="fence-obj" src="Fence_White.obj"></a-asset-item>
+            <a-asset-item id="fence-mtl" src="Fence_White.mtl"></a-asset-item>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-26.3 -1 -34.5" rotation="0 90 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-22.2 -1 -34.5" rotation="0 90 0"></a-obj-model>
+
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position=" 15.8 -1 -34.5" rotation="0 90 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position=" 11.7 -1 -34.5" rotation="0 90 0"></a-obj-model>
+
+        <!-- left fence -->
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-25.2 -1 -36.2" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-25.2 -1 -32.1" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-25.2 -1 -28" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-25.2 -1 -23.9" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-25.2 -1 -19.8" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-25.2 -1 -15.7" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-25.2 -1 -11.6" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-25.2 -1 -7.5" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-25.2 -1 -3.4" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-25.2 -1 1.3" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-25.2 -1 5.4" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-25.2 -1 9.5" rotation="0 0 0"></a-obj-model>        
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-25.2 -1 13.6" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-25.2 -1 17.7" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-25.2 -1 21.8" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-25.2 -1 25.9" rotation="0 0 0"></a-obj-model>
+
+        <!-- back fence -->
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-26.38 -1 35.19" rotation="0 90 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-22.28 -1 35.19" rotation="0 90 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-18.18 -1 35.19" rotation="0 90 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-14.08 -1 35.19" rotation="0 90 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-9.98 -1 35.19" rotation="0 90 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-5.88 -1 35.19" rotation="0 90 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="-1.78 -1 35.19" rotation="0 90 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position=" 2.68 -1 35.19" rotation="0 90 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position=" 6.78 -1 35.19" rotation="0 90 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position=" 10.88 -1 35.19" rotation="0 90 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position=" 14.98 -1 35.19" rotation="0 90 0"></a-obj-model>
+
+        <!-- right fance -->
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="24.47 -1 -36.2" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="24.47 -1 -32.1" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="24.47 -1 -28" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="24.47 -1 -23.9" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="24.47 -1 -19.8" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="24.47 -1 -15.7" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="24.47 -1 -11.6" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="24.47 -1 -7.5" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="24.47 -1 -3.4" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="24.47 -1 1.3" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="24.47 -1 5.4" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="24.47 -1 9.5" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="24.47 -1 13.6" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="24.47 -1 17.7" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="24.47 -1 21.8" rotation="0 0 0"></a-obj-model>
+        <a-obj-model src="#fence-obj" mtl="#fence-mtl" scale="0.08 0.08 0.08" position="24.47 -1 25.9" rotation="0 0 0"></a-obj-model>
+
+        <!-- tree's -->
+        <a-asset-item id="tree-obj" src="tree.obj"></a-asset-item>
+            <a-asset-item id="tree-mtl" src="tree.mtl"></a-asset-item>
+        <a-obj-model src="#tree-obj" mtl="#tree-mtl" scale="1 1 1" position="15 -1 1" rotation="0 10 0"></a-obj-model>
+
+        <a-obj-model src="#tree-obj" mtl="#tree-mtl" scale="1 1 1" position="20 -8 -30" rotation="0 130 0"></a-obj-model>
+        <a-obj-model src="#tree-obj" mtl="#tree-mtl" scale="2 2 2" position="25 -1 -40" rotation="0 10 0"></a-obj-model>
+
+        <a-obj-model src="#tree-obj" mtl="#tree-mtl" scale="2 2 2" position="20 -1 30" rotation="0 10 0"></a-obj-model>
+
+        <a-obj-model src="#tree-obj" mtl="#tree-mtl" scale="1 1 1" position="-20 -2.3 -25" rotation="0 10 0"></a-obj-model>
+
+        <a-obj-model src="#tree-obj" mtl="#tree-mtl" scale="2 2 2" position="-20 -1 28" rotation="0 10 0"></a-obj-model>
+
+        <!--field-->
+
+        <a-asset-item id="football-obj" src="football_field.obj"></a-asset-item>
+            <a-asset-item id="football-mtl" src="football_field.mtl"></a-asset-item>
+        <a-obj-model src="#football-obj" mtl="#football-mtl" scale="1.3 1 1.3" position="7 -1 -10" rotation="0 40 0"></a-obj-model>
+
+        <a-cylinder color="gray" src="" radius="8" position="5 -1.4 23" rotation="0 0 0"></a-cylinder>
+        <a-plane material="src:bear.png; alphaTest:0.7;" shadow="cast:true; receive:true" height="7" width="7" position="8 -0.8 23" rotation="270 45 0"></a-plane>
+        <a-plane material="src:t-rex-chalk.png; alphaTest:0.7;" shadow="cast:true; receive:true" height="6" width="6" position="4 -0.8 28" rotation="270 -60 0"></a-plane>
+        <a-plane material="src:giraffe-chalk.png; alphaTest:0.7;" shadow="cast:true; receive:true" height="6" width="6" position="1.5 -0.8 21" rotation="270 220 0"></a-plane>
+        
+        <!--Vraag-->
+        <a-plane id="js--vraagw" class="js--vraag" rotation="180 40 0" height="0.5" width="3" position="-50 2.5 -50"></a-plane>
+        <a-text id="js--vraagt" value="Wil je met mij verstoppertje spelen?" rotation="0 220 0" width="4" color="black" position="-50 2.5 -50"></a-text>
+        
+        <!--Gefeliciteerd-->
+        <a-plane id="js--gw" class="js--gefeliciteerd" rotation="180 0 0" height="0.5" width="3" position="-50 2.5 -50"></a-plane>
+        <a-text id="js--gt" value="Gefeliciteerd, Je hebt me gevonden!" rotation="0 180 0" width="4" color="black" position="-50 2.5 -50"></a-text>
+        
+        
+        <a-asset-item 
+          id="boy"
+          src="boy.glb">
+        </a-asset-item>
+        <a-entity id="js--boy" class="js--boy js--ineract" gltf-model="#boy" position="12 0.7 -20" rotation="0 240 0" scale="0.7 0.7 0.7"></a-entity>w
+        
+    </a-scene>
+</body>
+</html>
